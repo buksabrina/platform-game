@@ -16,3 +16,6 @@ func set_level(level):
 
 func victory():
 	$level.text = "You Win!"
+
+func game_over():
+	$level.text = "You lose! GAME OVER"

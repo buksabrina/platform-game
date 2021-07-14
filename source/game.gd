@@ -5,6 +5,10 @@ export var current_level = 0
 var coins := -1
 var lives := -1
 
+func back_to_main():
+	var timer := get_tree().create_timer(10)
+	yield (timer,"timeout")
+	get_tree().change_scene("res://source/Main.tscn")
 	
 func next_level(increment):
 	if $level:
@@ -19,9 +23,14 @@ func next_level(increment):
 	var interstitial_scene = interstitial.instance()
 	interstitial_scene.set_level (current_level)
 	add_child (interstitial_scene)
+	if $level and lives < 0 :
+		interstitial_scene.game_over()
+		back_to_main()
+		return
 	var level := load ("res://source/level" + str(current_level) + ".tscn")
 	if not level:
 		interstitial_scene.victory()
+		back_to_main()
 		return
 	var timer := get_tree().create_timer(5)
 	yield (timer,"timeout")
