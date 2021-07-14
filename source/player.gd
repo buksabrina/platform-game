@@ -4,7 +4,7 @@ extends KinematicBody2D
 
 var velocity := Vector2.ZERO
 export var walk_speed := 100
-export var jump_speed := 400
+export var jump_speed := 500
 
 export var traction := 0.05
 
