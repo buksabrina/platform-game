@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/flag_red.png" type="Texture" id=1]
 [ext_resource path="res://source/flag.gd" type="Script" id=2]
+[ext_resource path="res://assets/Victory.mp3" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 55.527, 132.972 )
@@ -47,4 +48,8 @@ animation = "wave"
 frame = 2
 playing = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
 [connection signal="body_entered" from="." to="." method="_on_flag_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer2D_finished"]

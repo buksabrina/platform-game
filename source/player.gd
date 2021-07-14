@@ -12,6 +12,10 @@ export var gravity := 2000
 
 export var coins := 0
 
+export var lives := 3
+
+export var done := false
+
 func change_animation():
 	if is_on_floor():
 		
@@ -43,6 +47,11 @@ func _physics_process(delta):
 	velocity.y+= gravity*delta
 	#position+=velocity*delta
 	velocity = move_and_slide(velocity,Vector2.UP)
+	var level = get_parent()
+	if not done and level.event_horizon < position.y:
+		die()
+	
+	
 
 func _process(delta):
 	change_animation()
@@ -50,3 +59,19 @@ func _process(delta):
 func collect_coin():
 	coins += 1
 	$HUD.set_coins(coins)
+
+func die():
+	if not $AudioStreamPlayer.playing and not done:
+		$AudioStreamPlayer.play()
+
+
+func refresh():
+	$HUD.set_coins(coins)
+	$HUD.set_lives(lives)
+
+
+func _on_AudioStreamPlayer_finished():
+	lives -= 1
+	$HUD.set_lives(lives)
+	get_parent().loss=true
+	done=true

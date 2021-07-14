@@ -13,3 +13,6 @@ func _ready():
 
 func set_coins(coins):
 	$CoinCount.text = str(coins)
+
+func set_lives(lives):
+	$lifeCount.text = str(lives)
