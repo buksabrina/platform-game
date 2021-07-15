@@ -6,7 +6,7 @@ var coins := -1
 var lives := -1
 
 func back_to_main():
-	var timer := get_tree().create_timer(10)
+	var timer := get_tree().create_timer(7)
 	yield (timer,"timeout")
 	get_tree().change_scene("res://source/Main.tscn")
 	
@@ -56,3 +56,4 @@ func _process(delta):
 		next_level(1)
 	if $level and $level.loss:
 		next_level(0)
+	

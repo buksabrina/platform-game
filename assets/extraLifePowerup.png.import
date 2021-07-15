@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Clean-Retro-Lines-Enemies.png-126dff5f7bb43b63fb26dcac61bc576b.stex"
+path="res://.import/extraLifePowerup.png-d8ee1bd2994867746b6fab0045c6552c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Clean-Retro-Lines-Enemies.png"
-dest_files=[ "res://.import/Clean-Retro-Lines-Enemies.png-126dff5f7bb43b63fb26dcac61bc576b.stex" ]
+source_file="res://assets/extraLifePowerup.png"
+dest_files=[ "res://.import/extraLifePowerup.png-d8ee1bd2994867746b6fab0045c6552c.stex" ]
 
 [params]
 
