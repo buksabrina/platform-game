@@ -55,8 +55,12 @@ func _physics_process(delta):
 	if not done and level.event_horizon < position.y:
 		die()
 	
-	
-
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.collider
+		if collider.name == "player" :
+			pass
+			
 func _process(delta):
 	change_animation()
 

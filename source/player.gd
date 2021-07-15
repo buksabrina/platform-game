@@ -65,6 +65,9 @@ func collect_life():
 func collect_coin():
 	coins += 1
 	$HUD.set_coins(coins)
+	
+func collect_key():
+	pass
 
 func die():
 	if not $AudioStreamPlayer.playing and not done:

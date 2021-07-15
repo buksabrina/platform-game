@@ -11,12 +11,16 @@ func back_to_main():
 	get_tree().change_scene("res://source/Main.tscn")
 	
 func next_level(increment):
+	current_level+= increment
+	go_to_level(current_level)
+func go_to_level(index):
 	if $level:
 		var player = $level.get_node("player")
 		assert (current_level == 0 or player)
 		coins=player.coins
 		lives=player.lives
-	current_level+= increment
+	current_level=index
+
 	for node in get_children():
 		node.queue_free ()
 	var interstitial := load ("res://source/Interstitial.tscn")

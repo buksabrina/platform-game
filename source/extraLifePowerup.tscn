@@ -49,7 +49,7 @@ position = Vector2( 0.445466, -2.44998 )
 scale = Vector2( 3.00452, 3.39429 )
 frames = SubResource( 8 )
 animation = "extraLife"
-frame = 2
+frame = 5
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
