@@ -16,7 +16,7 @@ export var lives := 3
 
 export var done := false
 
-var go_left = false
+var go_left := true
 
 var go_right := false
 
@@ -30,16 +30,22 @@ func change_animation():
 		else: 
 			$AnimatedSprite.play ("walk")
 			if velocity.x < 0 :
-				$AnimatedSprite.flip_h=true
-			elif velocity.x > 0:
 				$AnimatedSprite.flip_h=false
+			elif velocity.x > 0:
+				$AnimatedSprite.flip_h=true
 	else:
 		$AnimatedSprite.play("jump")
 
 func _ready():
 	pass
 
+func think():
+	if is_on_wall():
+		go_left = not go_left
+		go_right = not go_right
+	
 func _physics_process(delta):
+	think()
 	var x = 0
 	if go_left:
 		x -= walk_speed
@@ -76,3 +82,8 @@ func die():
 func _on_AudioStreamPlayer_finished():
 
 	done=true
+
+
+func _on_attack_body_entered(body):
+	if body.name == "player":
+		body.hit()

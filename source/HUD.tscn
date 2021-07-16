@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/coin.png" type="Texture" id=1]
 [ext_resource path="res://source/HUD.gd" type="Script" id=2]
 [ext_resource path="res://assets/Clean-Retro-Lines-Player.png" type="Texture" id=3]
 [ext_resource path="res://source/pauseDelegate.gd" type="Script" id=4]
+[ext_resource path="res://assets/heart.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -81,11 +82,11 @@ frame = 1
 playing = true
 
 [node name="lifeCount" type="Label" parent="."]
-margin_left = 26.0678
-margin_top = 37.4199
-margin_right = 66.0678
-margin_bottom = 51.4199
-text = "3"
+margin_left = 24.8178
+margin_top = 39.4199
+margin_right = 64.8178
+margin_bottom = 53.4199
+text = "5"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -98,6 +99,21 @@ margin_right = 93.9128
 margin_bottom = 76.1324
 text = "Game Paused"
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heart" type="Sprite" parent="."]
+position = Vector2( 14.2292, 70.0656 )
+scale = Vector2( 0.553778, 0.685019 )
+texture = ExtResource( 5 )
+
+[node name="healthCount" type="Label" parent="."]
+margin_left = 26.25
+margin_top = 64.75
+margin_right = 71.25
+margin_bottom = 81.75
+text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
 }

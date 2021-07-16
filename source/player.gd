@@ -12,14 +12,25 @@ export var gravity := 2000
 
 export var coins := 0
 
-export var lives := 3
+export var lives := 5
 
 export var done := false
+
+export var health := 10
+
+var was_hit := false
 
 
 
 func change_animation():
-	if is_on_floor():
+	if health == 0:
+		if $AnimatedSprite.flip_h:
+			rotation_degrees = 90
+		else:
+			rotation_degrees = 270
+	elif was_hit:
+		$AnimatedSprite.play("hit")
+	elif is_on_floor():
 		
 		if velocity.x==0:
 			$AnimatedSprite.play("idle")
@@ -36,6 +47,8 @@ func _ready():
 	$Camera2D.smoothing_enabled=true
 
 func _physics_process(delta):
+	if health == 0:
+		return
 	var x = 0
 	if Input.is_action_pressed("walk_left"):
 		x -= walk_speed
@@ -54,6 +67,7 @@ func _physics_process(delta):
 		die()
 	
 	
+	
 
 func _process(delta):
 	change_animation()
@@ -66,12 +80,24 @@ func collect_coin():
 	coins += 1
 	$HUD.set_coins(coins)
 	
+func take_damage():
+	health = max(health-1,0)
+	$HUD.set_health(health)
+	if health == 0:
+		die()
+	
+func hit():
+	if not was_hit:
+		take_damage()
+		was_hit= true
+		
 func collect_key():
 	pass
 
 func die():
 	if not $AudioStreamPlayer.playing and not done:
 		$AudioStreamPlayer.play()
+		health = 0
 
 
 func refresh():
@@ -84,3 +110,8 @@ func _on_AudioStreamPlayer_finished():
 	$HUD.set_lives(lives)
 	get_parent().loss=true
 	done=true
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "hit":
+		was_hit = false

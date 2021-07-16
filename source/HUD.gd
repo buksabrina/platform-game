@@ -16,3 +16,6 @@ func set_coins(coins):
 
 func set_lives(lives):
 	$lifeCount.text = str(lives)
+
+func set_health(health):
+	$healthCount.text = str(health)
