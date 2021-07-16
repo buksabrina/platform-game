@@ -71,14 +71,13 @@ __meta__ = {
 position = Vector2( 13.8591, 14.8041 )
 frames = SubResource( 7 )
 animation = "spin"
-frame = 2
+frame = 3
 playing = true
 
 [node name="life" type="AnimatedSprite" parent="."]
 position = Vector2( 15.1361, 42.8857 )
 frames = SubResource( 10 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="lifeCount" type="Label" parent="."]
@@ -93,10 +92,10 @@ __meta__ = {
 
 [node name="pause" type="Label" parent="."]
 visible = false
-margin_left = 5.91279
-margin_top = 62.1324
-margin_right = 93.9128
-margin_bottom = 76.1324
+margin_left = 5.31819
+margin_top = 90.0788
+margin_right = 93.3182
+margin_bottom = 104.079
 text = "Game Paused"
 script = ExtResource( 4 )
 __meta__ = {
